@@ -64,55 +64,10 @@ if __name__ == "__main__":
       shutil.rmtree('/tmp/%s' % repo['name'])
     repo_obj = git.Repo.clone_from(repo['url'], '/tmp/%s' % repo['name'])
     repo_obj.git.checkout('master', b=repo['branch'])
-    import pdb;pdb.set_trace()
     new_file_obj = open("%s/%s" % (repo_obj.git.working_dir, file_name), 'a')
     new_file_obj.write(new_file_text)
     new_file_obj.close()
     repo_obj.git.add(file_name)
     repo_obj.git.commit(m="new file added thru code...")
     repo_obj.git.push("origin", "%s" % repo['branch'])
-
-
-
-
-
-
-# text = """<head>
-#   <style>
-# table {
-#   font-family: arial, sans-serif;
-#   border-collapse: collapse;
-#   width: 100%;
-# }
-
-# td, th {
-#   border: 1px solid #dddddd;
-#   text-align: left;
-#   padding: 8px;
-# }
-
-# tr:nth-child(even) {
-#   background-color: #dddddd;
-# }
-# </style>
-# </head>
-# <body>
-# <h1>Crowdstrike</h1>
-#   <table>
-#   <tr>
-#     <th>Repo Name</th>
-#     <th>Repo Url</th>
-#     <th>Branch Name</th>
-#   </tr>
-#   <tr>
-#     <td>Cs1</td>
-#     <td>https://bitbucket.org/zeeshan_07/cs1/src/master/</td>
-#     <td>crowdstrike1</td>
-#   </tr>
-#   <tr>
-#     <td>Cs2</td>
-#     <td>https://bitbucket.org/zeeshan_07/cs2/src/master/</td>
-#     <td>crowdstrike2</td>
-#   </tr>
-# </body>"""
 
